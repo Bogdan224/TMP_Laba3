@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using TMP_Laba3_Libraries.Authorization;
 
 namespace TMP_Laba3
 {
@@ -9,7 +10,7 @@ namespace TMP_Laba3
             var list = new List<Person>();
 
             if (!File.Exists(path))
-                return list;
+                throw new FileNotFoundException();
 
             foreach (var line in File.ReadAllLines(path))
             {

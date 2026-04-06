@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using TMP_Laba3_Libraries.Authorization;
 
 namespace TMP_Laba3
 {
     public class Seeker
     {
-        public Person Seek(string name, string password, List<Person> users)
+        public Person? Seek(string name, string password, List<Person> users)
         {
             foreach (var user in users)
             {

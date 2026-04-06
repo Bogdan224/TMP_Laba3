@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TMP_Laba3
+﻿namespace TMP_Laba3_Libraries.Authorization
 {
     public class Person
     {
