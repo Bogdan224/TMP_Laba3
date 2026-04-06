@@ -32,6 +32,9 @@ namespace TMP_Laba3
 
         private void EnterButton_Click(object sender, RoutedEventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(NameUserTextBox.Text) || string.IsNullOrWhiteSpace(PasswordTextBox.Text))
+                MessageBox.Show("Заполните поля ввода!");
+
             AssemblyPerson assemblyPerson = new AssemblyPerson();
 
             string NamePerson = NameUserTextBox.Text;
@@ -40,9 +43,10 @@ namespace TMP_Laba3
             Person _person = assemblyPerson.Assembly(NamePerson, Password);
         }
 
-        private void CancelButton_Click_1(object sender, RoutedEventArgs e)
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-
+            NameUserTextBox.Text = string.Empty;
+            PasswordTextBox.Text = string.Empty;
         }
 
         public void Update()
