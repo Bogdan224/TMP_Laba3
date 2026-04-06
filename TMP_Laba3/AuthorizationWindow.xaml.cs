@@ -32,7 +32,12 @@ namespace TMP_Laba3
 
         private void EnterButton_Click(object sender, RoutedEventArgs e)
         {
+            AssemblyPerson assemblyPerson = new AssemblyPerson();
 
+            string NamePerson = NameUserTextBox.Text;
+            string Password = PasswordTextBox.Text;
+
+            Person _person = assemblyPerson.Assembly(NamePerson, Password);
         }
 
         private void CancelButton_Click_1(object sender, RoutedEventArgs e)
@@ -40,7 +45,7 @@ namespace TMP_Laba3
 
         }
 
-        public void UpdateLang()
+        public void Update()
         {
 
         }
