@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace TMP_Laba3
 {
@@ -35,10 +36,9 @@ namespace TMP_Laba3
 
             users = reader.Read(_path);
 
-            //CultureInfo currentInputLanguage = InputLanguageManager.Current.CurrentInputLanguage;
-            //LangTextBlock.Text = currentInputLanguage.DisplayName;
-            //bool isCapsLockOn = Console.CapsLock;
-            //KeyTextBlock.Text = $"Клавиша {(isCapsLockOn ? "CapsLock нажата" : "CapsLock не нажата")}";
+            this.PreviewKeyDown += AuthorizationWindow_PreviewKeyDown;
+            this.PreviewKeyUp += AuthorizationWindow_PreviewKeyUp;
+            UpdateLanguageAndCapsLock();
         }
 
         private void EnterButton_Click(object sender, RoutedEventArgs e)
@@ -64,9 +64,25 @@ namespace TMP_Laba3
             PasswordTextBox.Text = string.Empty;
         }
 
-        public void Update()
-        {
+        private void AuthorizationWindow_PreviewKeyDown(object sender, KeyEventArgs e)
+            => UpdateLanguageAndCapsLock();
 
+        private void AuthorizationWindow_PreviewKeyUp(object sender, KeyEventArgs e)
+            => UpdateLanguageAndCapsLock();
+
+        private void UpdateLanguageAndCapsLock()
+        {
+            string text = "";
+            CultureInfo currentInputLanguage = InputLanguageManager.Current.CurrentInputLanguage;
+
+            if (currentInputLanguage.DisplayName == "английский (Соединенные Штаты)")
+                text = "Язык ввода Английский";
+            else if (currentInputLanguage.DisplayName == "русский (Россия)")
+                text = "Язык ввода Русский";
+            LangTextBlock.Text = text;
+
+            bool isCapsLockOn = Console.CapsLock;
+            KeyTextBlock.Text = $"Клавиша {(isCapsLockOn ? "CapsLock нажата" : "CapsLock не нажата")}";
         }
     }
 }
