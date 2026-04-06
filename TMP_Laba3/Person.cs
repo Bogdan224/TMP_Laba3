@@ -8,13 +8,49 @@ namespace TMP_Laba3
 {
     public class Person
     {
-        public string _name { get; private set; }
-        public string _password { get; private set; }
+        protected string _name { get; private set; }
+        protected string _password { get; private set; }
 
-        public Person(string name, string password)
+        protected string _role { get; private set; }
+
+        public string Name 
         {
-            _name = name; 
-            _password = password;
+            get { return _name; }
+
+            set
+            {
+                if (!string.IsNullOrWhiteSpace(value))
+                    _name = value;
+            }
+        }
+
+        public string Password
+        {
+            get { return _password; }
+
+            set
+            {
+                if (!string.IsNullOrWhiteSpace(value))
+                    _password = value;
+            }
+        }
+
+        public string Role
+        {
+            get { return _role; }
+
+            set
+            {
+                if (!string.IsNullOrWhiteSpace(value))
+                    _role = value;
+            }
+        }
+
+        public Person(string name, string password, string role)
+        {
+            Name = name; 
+            Password = password;
+            Role = role;
         }
     }
 }

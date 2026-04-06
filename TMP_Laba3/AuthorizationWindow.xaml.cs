@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -20,9 +21,19 @@ namespace TMP_Laba3
     /// </summary>
     public partial class AuthorizationWindow : Window
     {
+        private static string _path = @$"C:\Users\{Environment.UserName}\Downloads\USERS.txt";
+
+        FileReader reader = new FileReader();
+        List<Person> users;
+
+        Seeker seeker = new Seeker();
+        Person _person;
+
         public AuthorizationWindow()
         {
             InitializeComponent();
+
+            users = reader.Read(_path);
 
             //CultureInfo currentInputLanguage = InputLanguageManager.Current.CurrentInputLanguage;
             //LangTextBlock.Text = currentInputLanguage.DisplayName;
@@ -32,15 +43,19 @@ namespace TMP_Laba3
 
         private void EnterButton_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(NameUserTextBox.Text) || string.IsNullOrWhiteSpace(PasswordTextBox.Text))
+            if (string.IsNullOrWhiteSpace(NameUserTextBox.Text) 
+                || string.IsNullOrWhiteSpace(PasswordTextBox.Text))
                 MessageBox.Show("Заполните поля ввода!");
 
-            AssemblyPerson assemblyPerson = new AssemblyPerson();
+            var _name = NameUserTextBox.Text;
+            var _password = PasswordTextBox.Text;
 
-            string NamePerson = NameUserTextBox.Text;
-            string Password = PasswordTextBox.Text;
+            _person = seeker.Seek(_name, _password, users);
 
-            Person _person = assemblyPerson.Assembly(NamePerson, Password);
+            if (_person != null)
+                MessageBox.Show("Происходит вход в среду");
+            else
+                MessageBox.Show("Такого пользователя не существует!");
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
