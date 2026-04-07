@@ -12,8 +12,6 @@ namespace TMP_Laba3
     {
         private static string _path = @$"C:\Users\{Environment.UserName}\Downloads\USERS.txt";
 
-        FileReader reader = new FileReader();
-        List<Person> users;
 
         Seeker seeker = new Seeker();
         Person _person;
@@ -21,15 +19,6 @@ namespace TMP_Laba3
         public AuthorizationWindow()
         {
             InitializeComponent();
-
-            try
-            {
-                users = reader.Read(_path);
-            }
-            catch(Exception ex) 
-            {
-                MessageBox.Show(ex.Message);
-            }
 
             this.PreviewKeyDown += AuthorizationWindow_PreviewKeyDown;
             this.PreviewKeyUp += AuthorizationWindow_PreviewKeyUp;
@@ -45,7 +34,7 @@ namespace TMP_Laba3
             var _name = NameUserTextBox.Text;
             var _password = PasswordTextBox.Text;
 
-            _person = seeker.Seek(_name, _password, users);
+            _person = seeker.Seek(_name, _password, _path);
 
             if (_person != null)
                 MessageBox.Show("Происходит вход в среду");
