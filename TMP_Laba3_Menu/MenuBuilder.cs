@@ -1,12 +1,13 @@
 ﻿using System.Windows.Controls;
 
-namespace TMP_Laba3_Libraries.MyMenu
+namespace TMP_Laba3_Menu
 {
     public class MenuBuilder
     {
         private Menu _menu;
 
-        public MenuBuilder() { 
+        public MenuBuilder() 
+        { 
             _menu = new Menu();
         }
 

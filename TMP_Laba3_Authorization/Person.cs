@@ -1,4 +1,4 @@
-﻿namespace TMP_Laba3_Libraries.Authorization
+﻿namespace TMP_Laba3_Authorization
 {
     public class Person
     {

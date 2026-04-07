@@ -1,7 +1,6 @@
 ﻿using System.IO;
-using TMP_Laba3_Libraries.MyMenu; 
 
-namespace TMP_Laba3_Libraries.Parsers
+namespace TMP_Laba3_Menu
 {
     public static class MenuFileParser
     {

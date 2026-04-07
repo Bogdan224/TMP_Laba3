@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TMP_Laba3_Libraries\TMP_Laba3_Libraries.csproj" />
+    <ProjectReference Include="..\TMP_Laba3_Libraries\TMP_Laba3_Menu.csproj" />
   </ItemGroup>
 
 </Project>

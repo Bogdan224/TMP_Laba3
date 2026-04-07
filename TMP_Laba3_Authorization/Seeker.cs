@@ -1,8 +1,7 @@
 ﻿using System.IO;
 using System.Windows.Documents;
-using TMP_Laba3_Libraries.Authorization;
 
-namespace TMP_Laba3
+namespace TMP_Laba3_Authorization
 {
     public class Seeker
     {
