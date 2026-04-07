@@ -1,13 +1,18 @@
 ﻿namespace TMP_Laba3_Authorization
 {
+    public enum UserRole
+    {
+        Boss, HR, OO
+    }
+
     public class Person
     {
         protected string _name { get; private set; }
         protected string _password { get; private set; }
 
-        protected string _role { get; private set; }
+        protected UserRole _role { get; private set; }
 
-        public string Name 
+        public string Name
         {
             get { return _name; }
 
@@ -29,20 +34,19 @@
             }
         }
 
-        public string Role
+        public UserRole Role
         {
             get { return _role; }
 
             set
             {
-                if (!string.IsNullOrWhiteSpace(value))
-                    _role = value;
+                _role = value;
             }
         }
 
-        public Person(string name, string password, string role)
+        public Person(string name, string password, UserRole role)
         {
-            Name = name; 
+            Name = name;
             Password = password;
             Role = role;
         }

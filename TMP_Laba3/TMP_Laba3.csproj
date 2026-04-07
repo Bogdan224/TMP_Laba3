@@ -9,7 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TMP_Laba3_Libraries\TMP_Laba3_Menu.csproj" />
+    <ProjectReference Include="..\TMP_Laba3_Authorization\TMP_Laba3_Authorization.csproj" />
+    <ProjectReference Include="..\TMP_Laba3_Menu\TMP_Laba3_Menu.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,16 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
+using System.Reflection;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using TMP_Laba3_Authorization;
+using TMP_Laba3_Menu;
 
 namespace TMP_Laba3
 {
@@ -19,9 +11,14 @@ namespace TMP_Laba3
     /// </summary>
     public partial class MenuWindow : Window
     {
-        public MenuWindow()
+        public MenuWindow(Person person)
         {
             InitializeComponent();
+
+            string dllPath = Assembly.GetExecutingAssembly().Location;
+            string directory = Path.GetDirectoryName(dllPath);
+
+            DataContext = new MenuWindowViewModel(person, Path.Combine(directory, "menu.txt"), Path.Combine(directory, "roles.txt"));
         }
     }
 }

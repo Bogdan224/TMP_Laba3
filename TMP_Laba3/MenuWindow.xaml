@@ -7,8 +7,14 @@
         mc:Ignorable="d"
         Title="MenuWindow" Height="450" Width="800">
     <Grid>
-        <Menu>
-            
+        <Menu ItemsSource="{Binding MenuItems}">
+            <Menu.ItemContainerStyle>
+                <Style TargetType="MenuItem">
+                    <Setter Property="Header" Value="{Binding Header}"/>
+                    <Setter Property="Command" Value="{Binding Command}"/>
+                    <Setter Property="ItemsSource" Value="{Binding Items}"/>
+                </Style>
+            </Menu.ItemContainerStyle>
         </Menu>
     </Grid>
 </Window>

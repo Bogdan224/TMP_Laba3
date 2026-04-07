@@ -2,9 +2,9 @@
 {
     public class AssemblyPerson
     {
-        public Person Assembly(string name, string password, string role)
+        public Person Assembly(string name, string password, int role)
         {
-            return new Person(name, password, role);
+            return new Person(name, password, (UserRole)role);
         }
     }
 }

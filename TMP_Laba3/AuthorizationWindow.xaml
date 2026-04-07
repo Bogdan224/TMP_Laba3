@@ -60,12 +60,14 @@
             <WrapPanel HorizontalAlignment="Center" Margin="5">
                 <Button Content="Вход"
                         Padding="30, 0, 30, 0"
+                        Width="140"
                         Click="EnterButton_Click"/>
 
                 <Border Width="200"/>
 
                 <Button Content="Отмена"
                         Padding="30, 0, 30, 0"
+                        Width="140"
                         Click="CancelButton_Click"/>
             </WrapPanel>
 

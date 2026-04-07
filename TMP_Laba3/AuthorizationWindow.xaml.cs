@@ -1,7 +1,8 @@
 ﻿using System.Globalization;
+using System.IO;
 using System.Windows;
 using System.Windows.Input;
-using TMP_Laba3_Libraries.Authorization;
+using TMP_Laba3_Authorization;
 
 namespace TMP_Laba3
 {
@@ -12,9 +13,7 @@ namespace TMP_Laba3
     {
         private static string _path = @$"C:\Users\{Environment.UserName}\Downloads\USERS.txt";
 
-
         Seeker seeker = new Seeker();
-        Person _person;
 
         public AuthorizationWindow()
         {
@@ -27,6 +26,14 @@ namespace TMP_Laba3
 
         private void EnterButton_Click(object sender, RoutedEventArgs e)
         {
+            //ЗАГЛУШКА
+            MenuWindow menuWindow = new MenuWindow(new Person("Boss", "boss", UserRole.OO));
+            menuWindow.Show();
+            this.Close();
+            MessageBox.Show("Вход нужно доделать!");
+            return;
+
+
             if (string.IsNullOrWhiteSpace(NameUserTextBox.Text) 
                 || string.IsNullOrWhiteSpace(PasswordTextBox.Text))
                 MessageBox.Show("Заполните поля ввода!");
@@ -34,7 +41,7 @@ namespace TMP_Laba3
             var _name = NameUserTextBox.Text;
             var _password = PasswordTextBox.Text;
 
-            _person = seeker.Seek(_name, _password, _path);
+            Person _person = seeker.Seek(_name, _password, _path);
 
             if (_person != null)
                 MessageBox.Show("Происходит вход в среду");

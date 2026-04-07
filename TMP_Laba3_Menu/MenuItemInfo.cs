@@ -1,17 +1,19 @@
-﻿namespace TMP_Laba3_Menu
+﻿using TMP_Laba3_Authorization;
+
+namespace TMP_Laba3_Menu
 {
     public class MenuItemInfo
     {
-        public string Name { get; set; }
+        public string Header { get; set; }
         public string? Command { get; set; }
-        public bool IsVisible { get; set; }
+        public ItemStatus Status { get; set; }
         public List<MenuItemInfo> Items { get; set; }
 
-        public MenuItemInfo(string name, bool isVisible, string? command = null)
+        public MenuItemInfo(string name, string? command = null)
         {
-            Name = name;
+            Header = name;
             Command = command;
-            IsVisible = isVisible;
+            Status = ItemStatus.VisibleAndAvailable;
             Items = new List<MenuItemInfo>();
         }
     }

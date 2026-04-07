@@ -24,7 +24,7 @@ namespace TMP_Laba3_Authorization
                 var role = parts[2];
 
                 if (name == _name && password == _password)
-                    return assembly.Assembly(_name, _password, role);
+                    return assembly.Assembly(_name, _password, Convert.ToInt32(role));
             }
             return null;
         }

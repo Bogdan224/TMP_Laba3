@@ -4,35 +4,21 @@ namespace TMP_Laba3_Menu
 {
     public class MenuBuilder
     {
-        private Menu _menu;
+        private List<MenuItemInfo> menuItems { get; set; }
 
         public MenuBuilder() 
         { 
-            _menu = new Menu();
+            menuItems = new List<MenuItemInfo>();
         }
 
         public void AddMenuItem(MenuItemInfo menuItem)
         {
-            _menu.Items.Add(InitializeMenuItem(menuItem));
+            menuItems.Add(menuItem);
         }
 
-        private MenuItem InitializeMenuItem(MenuItemInfo menuItem)
+        public IEnumerable<MenuItemInfo> Build()
         {
-            MenuItem res = new MenuItem();
-            res.Name = menuItem.Name;
-            res.CommandParameter = menuItem.Command;
-
-            foreach (var item in menuItem.Items)
-            {
-                res.Items.Add(InitializeMenuItem(item));
-            }
-
-            return res;
-        }
-
-        public Menu Build()
-        {
-            return _menu;
+            return menuItems;
         }
     }
 }
