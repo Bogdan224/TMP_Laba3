@@ -50,19 +50,15 @@ namespace TMP_Laba3
 
             foreach (var item in items)
             {
-                // Получаем права для текущего пункта меню
                 var permission = GetPermissionForMenuItem(item.Header, depth);
 
-                // Если доступ скрыт (AccessLevel = 2) - пропускаем
                 if (permission?.AccessLevel == 2)
                     continue;
 
-                // Определяем статус (видимость/доступность)
                 ItemStatus status = permission != null
                     ? permission.GetItemStatus()
                     : ItemStatus.VisibleAndAvailable;
 
-                // Создаём команду с учётом прав
                 ICommand command = null;
                 if (!string.IsNullOrEmpty(item.Command) && status == ItemStatus.VisibleAndAvailable)
                 {
@@ -77,10 +73,8 @@ namespace TMP_Laba3
                     Status = status
                 };
 
-                // Рекурсивно обрабатываем дочерние элементы
                 model.Items = ConvertToMenuModels(item.Items, depth + 1);
 
-                // Если пункт меню не имеет команды и нет дочерних элементов - не добавляем
                 if (model.Command == null && model.Items.Count == 0)
                     continue;
 
@@ -95,7 +89,6 @@ namespace TMP_Laba3
             if (_currentRolePermissions == null)
                 return null;
 
-            // Ищем в корневых элементах
             if (_currentRolePermissions.Permissions.ContainsKey(header))
             {
                 var perm = _currentRolePermissions.Permissions[header];
@@ -103,7 +96,6 @@ namespace TMP_Laba3
                     return perm;
             }
 
-            // Ищем в дочерних элементах
             foreach (var perm in _currentRolePermissions.Permissions.Values)
             {
                 var found = FindPermissionInChildren(perm, header, depth);

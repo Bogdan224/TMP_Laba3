@@ -11,13 +11,16 @@ namespace TMP_Laba3
     /// </summary>
     public partial class AuthorizationWindow : Window
     {
-        private static string _path = @$"C:\Users\{Environment.UserName}\Downloads\USERS.txt";
+        private string _path;
 
         Seeker seeker = new Seeker();
 
         public AuthorizationWindow()
         {
             InitializeComponent();
+
+            var path = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, "..", "..", ".."));
+            _path = Path.Combine(path, "USERS.txt");
 
             this.PreviewKeyDown += AuthorizationWindow_PreviewKeyDown;
             this.PreviewKeyUp += AuthorizationWindow_PreviewKeyUp;
@@ -26,25 +29,25 @@ namespace TMP_Laba3
 
         private void EnterButton_Click(object sender, RoutedEventArgs e)
         {
-            //ЗАГЛУШКА
-            MenuWindow menuWindow = new MenuWindow(new Person("Boss", "boss", UserRole.OO));
-            menuWindow.Show();
-            this.Close();
-            MessageBox.Show("Вход нужно доделать!");
-            return;
-
-
-            if (string.IsNullOrWhiteSpace(NameUserTextBox.Text) 
+            if (string.IsNullOrWhiteSpace(NameUserTextBox.Text)
                 || string.IsNullOrWhiteSpace(PasswordTextBox.Text))
+            {
                 MessageBox.Show("Заполните поля ввода!");
+                return;
+            }
+                
 
             var _name = NameUserTextBox.Text;
             var _password = PasswordTextBox.Text;
 
-            Person _person = seeker.Seek(_name, _password, _path);
+            Person? _person = seeker.Seek(_name, _password, _path);
 
             if (_person != null)
-                MessageBox.Show("Происходит вход в среду");
+            {
+                MenuWindow menuWindow = new MenuWindow(_person);
+                menuWindow.Show();
+                this.Close();
+            }
             else
                 MessageBox.Show("Такого пользователя не существует!");
         }

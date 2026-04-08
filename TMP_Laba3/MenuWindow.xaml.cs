@@ -16,9 +16,9 @@ namespace TMP_Laba3
             InitializeComponent();
 
             string dllPath = Assembly.GetExecutingAssembly().Location;
-            string directory = Path.GetDirectoryName(dllPath);
+            string path = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, "..", "..", ".."));
 
-            DataContext = new MenuWindowViewModel(person, Path.Combine(directory, "menu.txt"), Path.Combine(directory, "roles.txt"));
+            DataContext = new MenuWindowViewModel(person, Path.Combine(path, "menu.txt"), Path.Combine(path, "roles.txt"));
         }
     }
 }

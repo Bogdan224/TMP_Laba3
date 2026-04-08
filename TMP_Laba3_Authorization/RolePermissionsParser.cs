@@ -11,14 +11,12 @@ public static class RolePermissionsParser
         int i = 0;
         while (i < lines.Length)
         {
-            // Пропускаем пустые строки
             if (string.IsNullOrWhiteSpace(lines[i]))
             {
                 i++;
                 continue;
             }
 
-            // Читаем строку роли: "Boss 0"
             var roleLine = lines[i].Trim();
             if (string.IsNullOrEmpty(roleLine))
             {
@@ -41,14 +39,12 @@ public static class RolePermissionsParser
                     RoleName = roleParts[0]
                 };
 
-                // Ищем открывающую скобку
                 i++;
                 while (i < lines.Length && !lines[i].Contains('{'))
                 {
                     i++;
                 }
 
-                // Читаем содержимое до закрывающей скобки
                 i++;
                 var currentPath = new Stack<MenuPermission>();
 
@@ -65,7 +61,6 @@ public static class RolePermissionsParser
                         continue;
                     }
 
-                    // Парсим строку: "0 Разное 0"
                     var parts = line.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
                     if (parts.Length >= 3)
                     {
@@ -80,7 +75,6 @@ public static class RolePermissionsParser
                             AccessLevel = accessLevel
                         };
 
-                        // Строим иерархию на основе глубины
                         if (depth == 0)
                         {
                             rolePermissions.Permissions[header] = permission;
@@ -89,7 +83,6 @@ public static class RolePermissionsParser
                         }
                         else
                         {
-                            // Находим родителя по глубине
                             while (currentPath.Count > depth)
                             {
                                 currentPath.Pop();

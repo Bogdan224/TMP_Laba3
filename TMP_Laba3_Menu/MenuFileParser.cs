@@ -32,7 +32,6 @@ namespace TMP_Laba3_Menu
             return menuInfo;
         }
 
-        //Проходит по дереву и возвращает последний элемент на предыдущей глубине
         private static MenuItemInfo GetLastItem(MenuItemInfo menuItemInfo, int depth, int currentDepth = 1)
         {
             if (currentDepth == depth)
