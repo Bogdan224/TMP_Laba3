@@ -9,8 +9,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\Key.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\TMP_Laba3_Authorization\TMP_Laba3_Authorization.csproj" />
     <ProjectReference Include="..\TMP_Laba3_Menu\TMP_Laba3_Menu.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\Key.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>

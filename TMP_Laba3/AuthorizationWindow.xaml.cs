@@ -30,7 +30,7 @@ namespace TMP_Laba3
         private void EnterButton_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(NameUserTextBox.Text)
-                || string.IsNullOrWhiteSpace(PasswordTextBox.Text))
+                || string.IsNullOrWhiteSpace(PasswordTextBox.Password))
             {
                 MessageBox.Show("Заполните поля ввода!");
                 return;
@@ -38,7 +38,7 @@ namespace TMP_Laba3
                 
 
             var _name = NameUserTextBox.Text;
-            var _password = PasswordTextBox.Text;
+            var _password = PasswordTextBox.Password;
 
             Person? _person = seeker.Seek(_name, _password, _path);
 
@@ -55,7 +55,7 @@ namespace TMP_Laba3
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             NameUserTextBox.Text = string.Empty;
-            PasswordTextBox.Text = string.Empty;
+            PasswordTextBox.Password = string.Empty;
         }
 
         private void AuthorizationWindow_PreviewKeyDown(object sender, KeyEventArgs e)
