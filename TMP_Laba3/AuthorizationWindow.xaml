@@ -8,8 +8,8 @@
         Title="Вход"
         FontSize="20"
         Background="LightBlue"
-        MinHeight="340"
-        MaxHeight="340"
+        MinHeight="350"
+        MaxHeight="350"
         MinWidth="600"
         MaxWidth="600"
         WindowStartupLocation="CenterScreen">
@@ -43,12 +43,12 @@
             <DockPanel>
                 <TextBlock DockPanel.Dock="Left" 
                            Text="Имя пользователя"
-                           Padding="10, 0, 0, 0"
+                           Padding="10 0 0 0"
                            Width="200"/>
 
                 <TextBox DockPanel.Dock="Right" 
                          x:Name="NameUserTextBox"
-                         Margin="0, 0, 5, 0"/>
+                         Margin="0 0 5 0"/>
             </DockPanel>
 
             <Border Height="25"/>
@@ -56,43 +56,58 @@
             <DockPanel>
                 <TextBlock DockPanel.Dock="Left"
                            Text="Пароль"
-                           Padding="10, 0, 0, 0"
+                           Padding="10 0 0 0"
                            Width="200"/>
 
                 <PasswordBox DockPanel.Dock="Right"
                          x:Name="PasswordTextBox"
-                         Margin="0, 0, 5, 0"
+                         Margin="0 0 5 0"
                          PasswordChar="*"/>
             </DockPanel>
 
             <Border Height="25"/>
 
-            <WrapPanel HorizontalAlignment="Center" Margin="5">
+            <StackPanel Orientation="Horizontal" Margin="0 5 0 5">
+                <Border Width="40"/>
+                
                 <Button Content="Вход"
-                        Padding="30, 0, 30, 0"
-                        Width="140"
-                        Click="EnterButton_Click"/>
+                    Padding="5"
+                    Width="140"
+                    Background="WhiteSmoke"
+                    BorderBrush="LightGray"
+                    BorderThickness="2"
+                    Click="EnterButton_Click"/>
 
-                <Border Width="200"/>
+                <Border Width="260"/>
 
                 <Button Content="Отмена"
-                        Padding="30, 0, 30, 0"
-                        Width="140"
-                        Click="CancelButton_Click"/>
-            </WrapPanel>
+                    Padding="5"
+                    Width="140"
+                    Background="WhiteSmoke"
+                    BorderBrush="LightGray"
+                    BorderThickness="2"
+                    Click="CancelButton_Click"/>
+            </StackPanel>
 
-            <Border Height="5" Background="LightGray"/>
+            <Border Height="5"
+                    Background="WhiteSmoke"
+                    BorderThickness="0"/>
 
-            <WrapPanel HorizontalAlignment="Left" Margin="5">
+            <StackPanel Orientation="Horizontal" >
                 <TextBlock x:Name="LangTextBlock"
                            Text="Язык ввода"
+                           Padding="5"
                            Width="250"/>
 
                 <TextBlock x:Name="KeyTextBlock"
                            Text="Клавиша"
-                           HorizontalAlignment="Right"
+                           Padding="5"
                            Width="300"/>
-            </WrapPanel>
+
+                <Border Height="50" Width="50"
+                        Background="WhiteSmoke"
+                        BorderThickness="0"/>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Window>
